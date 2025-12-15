@@ -19,8 +19,6 @@ public class MonsterController {
 
     @GetMapping
     public List<MonsterResponseDTO> getAll(){
-
-        List<MonsterResponseDTO> monsterList = repository.findAll().stream().map(MonsterResponseDTO::new).toList();
-        return monsterList;
+        return repository.findAll().stream().map(MonsterResponseDTO::new).toList();
     }
 }
