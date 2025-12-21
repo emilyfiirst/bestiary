@@ -3,8 +3,8 @@ package io.emilyfiirst.bestiary.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "sign")
-@Entity(name = "sign")
+@Table(name = "signs")
+@Entity(name = "signs")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,6 +19,6 @@ public class Sign {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false, unique = true)
-    private String URLImage;
+    @Column(name = "url_image", nullable = false, unique = true)
+    private String urlImage;
 }

@@ -19,6 +19,6 @@ public class Oil {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false, unique = true)
-    private String URLImage;
+    @Column(name = "url_image", nullable = false, unique = true)
+    private String urlImage;
 }

@@ -1,0 +1,84 @@
+CREATE TABLE monsters (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    game VARCHAR(50) NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE oils (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT.
+    image_url VARCHAR(500)
+);
+
+CREATE TABLE signs (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(500)
+);
+
+
+CREATE TABLE potions (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(500)
+);
+
+CREATE TABLE bombs (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(500)
+);
+
+
+CREATE TABLE monster_oils (
+    monster_id BIGINT NOT NULL,
+    oil_id BIGINT NOT NULL,
+    PRIMARY KEY (monster_id, oil_id),
+    FOREIGN KEY (monster_id) REFERENCES monsters(id),
+    FOREIGN KEY (oil_id) REFERENCES oils(id)
+);
+
+
+CREATE TABLE monster_signs (
+    monster_id BIGINT NOT NULL,
+    sign_id BIGINT NOT NULL,
+    PRIMARY KEY (monster_id, sign_id),
+    FOREIGN KEY (monster_id) REFERENCES monsters(id),
+    FOREIGN KEY (sign_id) REFERENCES signs(id)
+);
+
+
+CREATE TABLE monster_potions (
+    monster_id BIGINT NOT NULL,
+    potion_id BIGINT NOT NULL,
+    PRIMARY KEY (monster_id, potion_id),
+    FOREIGN KEY (monster_id) REFERENCES monsters(id),
+    FOREIGN KEY (potion_id) REFERENCES potions(id)
+);
+
+
+CREATE TABLE monster_bombs (
+    monster_id BIGINT NOT NULL,
+    bomb_id BIGINT NOT NULL,
+    PRIMARY KEY (monster_id, bomb_id),
+    FOREIGN KEY (monster_id) REFERENCES monsters(id),
+    FOREIGN KEY (bomb_id) REFERENCES bombs(id)
+);
+
+CREATE TABLE monster_images (
+    id BIGSERIAL PRIMARY KEY,
+    url VARCHAR(500) NOT NULL,
+    monster_id BIGINT NOT NULL,
+    CONSTRAINT fk_monster_image
+        FOREIGN KEY (monster_id)
+        REFERENCES monsters(id)
+        ON DELETE CASCADE
+);
+
+
